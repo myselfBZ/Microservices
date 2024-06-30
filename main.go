@@ -17,7 +17,6 @@ func main(){
     
     srvc := redis.NewTaskService(redisClient)
     
-    srvc = NewLoggingService(srvc)
     mux := http.NewServeMux()
     h := handlers.NewTaskHandler(srvc) 
     mux.HandleFunc("/tasks/{id}", h.HandleTaskGet)

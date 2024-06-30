@@ -24,12 +24,12 @@ type TaskHandler struct{
 
 
 
-func (h *TaskHandler) HandleTaskGet(w http.ResponseWriter, r *http.Request){
-    tasks, _ := h.serv.GetTask(context.TODO())
+func (h *TaskHandler) HandleGetAll(w http.ResponseWriter, r *http.Request){
+    tasks, _ := h.serv.GetTasks(context.TODO())
     json.NewEncoder(w).Encode(tasks)
 }
 
-func (h *TaskHandler) HandleGetAll(w http.ResponseWriter, r *http.Request){
+func (h *TaskHandler) HandleTaskGet(w http.ResponseWriter, r *http.Request){
     id := r.PathValue("id")
     validatedId, err := strconv.Atoi(id)
     if err != nil{
